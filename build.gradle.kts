@@ -7,23 +7,27 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
+val ktorVersion = "1.3.2"
+
 kotlin {
-    /* Targets configuration omitted. 
-    *  To find out how to configure the targets, please follow the link:
-    *  https://kotlinlang.org/docs/reference/building-mpp-with-gradle.html#setting-up-targets */
+    js {
+        browser()
+    }
 
     sourceSets {
         val commonMain by getting {
             dependencies {
                 implementation(kotlin("stdlib-common"))
+                implementation("io.ktor:ktor-client-core:$ktorVersion")
             }
         }
-        val commonTest by getting {
+        val jsMain by getting {
             dependencies {
-                implementation(kotlin("test-common"))
-                implementation(kotlin("test-annotations-common"))
+                implementation("io.ktor:ktor-client-core-js:$ktorVersion")
+                implementation("io.ktor:ktor-client-js:$ktorVersion")
             }
         }
     }

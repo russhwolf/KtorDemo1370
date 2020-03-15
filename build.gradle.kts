@@ -13,7 +13,7 @@ repositories {
 val ktorVersion = "1.3.2"
 
 kotlin {
-    iosX64("ios")
+    jvm()
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -27,10 +27,10 @@ kotlin {
                 implementation(kotlin("test-annotations-common"))
             }
         }
-        val iosMain by getting {
+        val jvmMain by getting {
             dependencies {
-                implementation("io.ktor:ktor-client-core-native:$ktorVersion")
-                implementation("io.ktor:ktor-client-ios:$ktorVersion")
+                implementation("io.ktor:ktor-client-core-jvm:$ktorVersion")
+                implementation("io.ktor:ktor-client-okhttp:$ktorVersion")
             }
         }
     }
